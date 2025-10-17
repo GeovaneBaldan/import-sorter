@@ -1,8 +1,19 @@
 {
   "name": "import-section-sorter",
-  "displayName": "import-section-sorter",
-  "description": "",
-  "version": "0.0.1",
+  "displayName": "TS Import Section Sorter",
+  "description": "Organize imports by configurable sections",
+  "version": "1.0.0",
+  "publisher": "GeovaneBaldan",
+  "homepage": "https://github.com/GeovaneBaldan/import-sorter/blob/main/README.md",
+  "bugs": {
+    "url": "https://github.com/GeovaneBaldan/import-sorter/issues",
+    "email": "geovane.baldan@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GeovaneBaldan/import-sorter"
+  },
+  "license": "MIT",
   "engines": {
     "vscode": "^1.105.0"
   },
