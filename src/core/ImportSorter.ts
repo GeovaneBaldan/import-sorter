@@ -6,9 +6,11 @@ import type { ImportConfig } from '../types'
 
 export class ImportSorter {
   private sections: ImportSection[]
+  private order: 'none' | 'alphabetical' | 'length'
 
   constructor(config: ImportConfig) {
     this.sections = config.sections.map(s => new ImportSection(s))
+    this.order = config.order ?? 'none'
   }
 
   sortImports(fileContent: string): string {
@@ -28,6 +30,10 @@ export class ImportSorter {
         const group = groups.find(g => g.name === matched.name)
         group?.addImport(imp)
       } else others.addImport(imp)
+    }
+
+    for (const group of [...groups, others]) {
+      group.sortImports(this.order)
     }
 
     const result: string[] = []

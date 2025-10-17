@@ -2,7 +2,7 @@
   "name": "import-section-sorter",
   "displayName": "TS Import Section Sorter",
   "description": "Organize imports by configurable sections",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "GeovaneBaldan",
   "homepage": "https://github.com/GeovaneBaldan/import-sorter/blob/main/README.md",
   "bugs": {
@@ -43,39 +43,49 @@
           "when": "editorLangId =~ /javascript|typescript/"
         }
       ]
-    }
-  },
-  "configuration": {
-    "type": "object",
-    "title": "Import Section Sorter Config",
-    "properties": {
-      "importSections.sorter.sections": {
-        "type": "array",
-        "description": "Lista de seções de import, cada uma com nome e regex.",
-        "default": [
-          {
-            "name": "Components",
-            "regex": "^@components/"
-          },
-          {
-            "name": "Assets",
-            "regex": "^@assets/"
-          },
-          {
-            "name": "Hooks",
-            "regex": "^@hooks/"
-          }
-        ],
-        "items": {
-          "type": "object",
-          "properties": {
-            "name": {
-              "type": "string"
+    },
+    "configuration": {
+      "type": "object",
+      "title": "Import Section Sorter Config",
+      "properties": {
+        "importSections.sorter.sections": {
+          "type": "array",
+          "description": "Lista de seções de import, cada uma com nome e regex.",
+          "default": [
+            {
+              "name": "Components",
+              "regex": "^@components/"
             },
-            "regex": {
-              "type": "string"
+            {
+              "name": "Assets",
+              "regex": "^@assets/"
+            },
+            {
+              "name": "Hooks",
+              "regex": "^@hooks/"
+            }
+          ],
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "regex": {
+                "type": "string"
+              }
             }
           }
+        },
+        "importSections.sorter.order": {
+          "type": "string",
+          "enum": [
+            "none",
+            "alphabetical",
+            "length"
+          ],
+          "default": "none",
+          "description": "Define como os imports dentro de cada grupo devem ser ordenados (none, alphabetical, length)."
         }
       }
     }

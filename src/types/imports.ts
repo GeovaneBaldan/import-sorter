@@ -5,4 +5,5 @@ export interface ImportSectionConfig {
 
 export interface ImportConfig {
   sections: ImportSectionConfig[]
+  order: 'none' | 'alphabetical' | 'length'
 }

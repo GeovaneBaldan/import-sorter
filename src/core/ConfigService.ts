@@ -23,6 +23,8 @@ export class ConfigService {
       )
       .map(s => ({ name: s.name.trim(), regex: s.regex.trim() }))
 
-    return { sections }
+    const order = root.get<'none' | 'alphabetical' | 'length'>('order', 'none')
+
+    return { sections, order }
   }
 }
