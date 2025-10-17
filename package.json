@@ -1,0 +1,92 @@
+{
+  "name": "import-section-sorter",
+  "displayName": "import-section-sorter",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.105.0"
+  },
+  "categories": [
+    "Formatters"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "importSorter.sortImports",
+        "title": "Sort Imports by Sections"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "importSorter.sortImports",
+          "group": "componentsGroup@1",
+          "when": "resourceExtname =~ /\\.(js|jsx|ts|tsx)$/"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "importSorter.sortImports",
+          "group": "componentsGroup@1",
+          "when": "editorLangId =~ /javascript|typescript/"
+        }
+      ]
+    }
+  },
+  "configuration": {
+    "type": "object",
+    "title": "Import Section Sorter Config",
+    "properties": {
+      "importSections.sorter.sections": {
+        "type": "array",
+        "description": "Lista de seções de import, cada uma com nome e regex.",
+        "default": [
+          {
+            "name": "Components",
+            "regex": "^@components/"
+          },
+          {
+            "name": "Assets",
+            "regex": "^@assets/"
+          },
+          {
+            "name": "Hooks",
+            "regex": "^@hooks/"
+          }
+        ],
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "regex": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "pnpm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "pnpm run compile && pnpm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.2.6",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "@types/vscode": "^1.105.0",
+    "@typescript-eslint/eslint-plugin": "^8.45.0",
+    "@typescript-eslint/parser": "^8.45.0",
+    "@vscode/test-cli": "^0.0.11",
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.36.0",
+    "typescript": "^5.9.3"
+  }
+}
